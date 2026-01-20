@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jean Pierre Chavez Guevara - Desarrollador Full Stack</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f4f4f4;
+        }
+
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        nav {
+            background: #333;
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+            font-weight: 500;
+        }
+
+        nav a:hover {
+            color: #667eea;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        section {
+            background: white;
+            margin: 2rem 0;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            color: #667eea;
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 0.5rem;
+        }
+
+        h3 {
+            color: #764ba2;
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .profile-pic {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: white;
+            margin: 0 auto;
+        }
+
+        .about-info p {
+            margin-bottom: 1rem;
+        }
+
+        .info-highlight {
+            background: #f8f9fa;
+            padding: 1rem;
+            border-left: 4px solid #667eea;
+            margin: 1rem 0;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .skill-category {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-top: 4px solid #667eea;
+        }
+
+        .skill-category h4 {
+            color: #667eea;
+            margin-bottom: 0.5rem;
+        }
+
+        .skill-category ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .skill-category li {
+            padding: 0.25rem 0;
+            position: relative;
+            padding-left: 1.2rem;
+        }
+
+        .skill-category li:before {
+            content: "▹";
+            position: absolute;
+            left: 0;
+            color: #764ba2;
+        }
+
+        .experience-item, .project-item {
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-left: 4px solid #764ba2;
+        }
+
+        .experience-header {
+            margin-bottom: 1rem;
+        }
+
+        .experience-title {
+            font-size: 1.3rem;
+            color: #333;
+            font-weight: 600;
+        }
+
+        .experience-subtitle {
+            color: #667eea;
+            font-weight: 500;
+            margin-top: 0.25rem;
+        }
+
+        .experience-date {
+            color: #666;
+            font-size: 0.9rem;
+            margin-top: 0.25rem;
+        }
+
+        .experience-content ul, .project-content ul {
+            margin-top: 0.5rem;
+            margin-left: 1.5rem;
+        }
+
+        .experience-content li, .project-content li {
+            margin: 0.5rem 0;
+        }
+
+        .tech-tags {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+        }
+
+        .tag {
+            background: #667eea;
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 15px;
+            font-size: 0.85rem;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .contact-card {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+            border-left: 4px solid #667eea;
+        }
+
+        .contact-card h3 {
+            color: #667eea;
+            margin-bottom: 0.5rem;
+            margin-top: 0;
+        }
+
+        .contact-card a {
+            color: #333;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .contact-card a:hover {
+            color: #667eea;
+        }
+
+        .pdf-section {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .pdf-download-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.3s, box-shadow 0.3s;
+            margin: 1rem;
+        }
+
+        .pdf-download-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .languages {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+        }
+
+        .language-item {
+            background: #f8f9fa;
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+        }
+
+        .language-item strong {
+            color: #667eea;
+        }
+
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 2rem;
+        }
+
+        .achievements {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+        }
+
+        .achievements h3 {
+            color: #667eea;
+            margin-top: 0;
+        }
+
+        .achievements ul {
+            margin-left: 1.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            header h1 {
+                font-size: 2rem;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Jean Pierre Chavez Guevara</h1>
+        <p>Desarrollador Full Stack | Egresado en Ciencias de la Computación</p>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#sobre-mi">Sobre Mí</a></li>
+            <li><a href="#experiencia">Experiencia</a></li>
+            <li><a href="#proyectos">Proyectos</a></li>
+            <li><a href="#habilidades">Habilidades</a></li>
+            <li><a href="#educacion">Educación</a></li>
+            <li><a href="#portfolio">CV Completo</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <section id="sobre-mi">
+            <h2>Sobre Mí</h2>
+            <div class="about-content">
+                <div class="profile-pic">👨‍💻</div>
+                <div class="about-info">
+                    <p>Egresado de la carrera de Ciencias de la Computación por la Universidad Nacional de San Agustín, con sólida formación en desarrollo de software full stack, diseño de APIs y gestión de bases de datos relacionales.</p>
+                    <p>Orientado a la construcción de soluciones escalables y eficientes, con experiencia en proyectos reales de impacto institucional. Busco integrarme a equipos de desarrollo donde pueda aportar valor técnico, aprender continuamente y contribuir a la mejora de productos de software.</p>
+                    <div class="info-highlight">
+                        <strong>📍 Ubicación:</strong> Arequipa, Perú<br>
+                        <strong>🎓 Especialización:</strong> Desarrollo Full Stack, Optimización de Sistemas<br>
+                        <strong>💼 Enfoque:</strong> Soluciones escalables con impacto real
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="experiencia">
+            <h2>Experiencia Profesional</h2>
+            
+            <div class="experience-item">
+                <div class="experience-header">
+                    <div class="experience-title">Desarrollador Full Stack</div>
+                    <div class="experience-subtitle">Sistema de Asignación Optimizada de Aulas y Horarios - UNSA</div>
+                    <div class="experience-date">Agosto 2025 – Enero 2026 | Arequipa, Perú</div>
+                </div>
+                <div class="experience-content">
+                    <p>Participé en el diseño y desarrollo de un sistema web institucional orientado a la optimización de la asignación de aulas, cursos, docentes y horarios universitarios en la Facultad de Ciencias Naturales y Formales.</p>
+                    <h4>Logros Destacados:</h4>
+                    <ul>
+                        <li><strong>Reducción del 85%</strong> de conflictos de horarios respecto al proceso manual</li>
+                        <li>Disminución del tiempo de planificación académica de <strong>2 semanas a 3 días</strong></li>
+                        <li>Algoritmo de optimización con tiempo de ejecución promedio de <strong>3.2 segundos</strong></li>
+                        <li>Sistema validado y aprobado por personal administrativo</li>
+                        <li>Cobertura de pruebas automatizadas superior al <strong>70%</strong></li>
+                    </ul>
+                    <h4>Responsabilidades:</h4>
+                    <ul>
+                        <li>Diseño e implementación del backend del módulo administrativo</li>
+                        <li>Desarrollo del frontend con interfaces modernas y responsivas</li>
+                        <li>Liderazgo técnico del backend: arquitectura, división de tareas, revisión de código</li>
+                        <li>Implementación de algoritmos de optimización (Programación Lineal, Algoritmos Genéticos)</li>
+                        <li>Coordinación con stakeholders institucionales</li>
+                    </ul>
+                </div>
+                <div class="tech-tags">
+                    <span class="tag">Next.js</span>
+                    <span class="tag">React</span>
+                    <span class="tag">FastAPI</span>
+                    <span class="tag">PostgreSQL</span>
+                    <span class="tag">SQLAlchemy</span>
+                    <span class="tag">PuLP</span>
+                    <span class="tag">Git</span>
+                </div>
+            </div>
+
+            <div class="experience-item">
+                <div class="experience-header">
+                    <div class="experience-title">Desarrollador de Software Backend</div>
+                    <div class="experience-subtitle">Sistema de Gestión de Historias Clínicas - Centro de Salud</div>
+                    <div class="experience-date">Marzo 2024 – Julio 2024 | Moquegua, Perú</div>
+                </div>
+                <div class="experience-content">
+                    <p>Desarrollo e implementación de un sistema de gestión de historias clínicas para mejorar el almacenamiento, acceso y administración de información médica de pacientes.</p>
+                    <h4>Logros Destacados:</h4>
+                    <ul>
+                        <li>Digitalización y centralización del <strong>100%</strong> de las historias clínicas</li>
+                        <li>Reducción significativa de errores asociados al manejo manual</li>
+                        <li>Mejora en los tiempos de acceso a datos clínicos y administrativos</li>
+                        <li>Sistema adoptado como herramienta principal por el personal del centro</li>
+                    </ul>
+                    <h4>Responsabilidades:</h4>
+                    <ul>
+                        <li>Desarrollo de módulos backend para gestión de pacientes e historias clínicas</li>
+                        <li>Diseño y normalización de base de datos relacional</li>
+                        <li>Implementación de consultas SQL optimizadas</li>
+                        <li>Soporte técnico durante puesta en producción</li>
+                    </ul>
+                </div>
+                <div class="tech-tags">
+                    <span class="tag">Python</span>
+                    <span class="tag">PostgreSQL</span>
+                    <span class="tag">SQL</span>
+                    <span class="tag">Git</span>
+                </div>
+            </div>
+        </section>
+
+        <section id="proyectos">
+            <h2>Proyectos Destacados</h2>
+            
+            <div class="project-item">
+                <h3>🏥 Sistema de Gestión de Historias Clínicas</h3>
+                <p><strong>Centro de Salud - Moquegua, Perú</strong></p>
+                <div class="project-content">
+                    <ul>
+                        <li>Programa para distribución y gestión de historias de vida de pacientes</li>
+                        <li>Sistema que facilita almacenamiento, organización y acceso eficiente a información clínica</li>
+                        <li>Implementación de funcionalidades para mejorar atención y seguimiento médico</li>
+                        <li>Contribución significativa a la optimización de procesos administrativos</li>
+                    </ul>
+                </div>
+                <div class="tech-tags">
+                    <span class="tag">Python</span>
+                    <span class="tag">PostgreSQL</span>
+                    <span class="tag">SQL</span>
+                </div>
+            </div>
+
+            <div class="project-item">
+                <h3>🎓 Sistema de Asignación de Aulas y Horarios</h3>
+                <p><strong>Universidad Nacional de San Agustín</strong></p>
+                <div class="project-content">
+                    <ul>
+                        <li>Sistema web para asignación optimizada de aulas y horarios universitarios</li>
+                        <li>Frontend: Next.js con interfaz responsive y moderna</li>
+                        <li>Backend: FastAPI con arquitectura RESTful y documentación automática</li>
+                        <li>Base de datos: PostgreSQL con diseño normalizado y consultas optimizadas</li>
+                        <li>Implementación de algoritmos de optimización de recursos y espacios</li>
+                        <li>Sistema en producción utilizado por la facultad para planificación académica</li>
+                    </ul>
+                </div>
+                <div class="tech-tags">
+                    <span class="tag">Next.js</span>
+                    <span class="tag">FastAPI</span>
+                    <span class="tag">PostgreSQL</span>
+                    <span class="tag">React</span>
+                    <span class="tag">Tailwind CSS</span>
+                    <span class="tag">Algoritmos de Optimización</span>
+                </div>
+            </div>
+        </section>
+
+        <section id="habilidades">
+            <h2>Habilidades Técnicas</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h4>Lenguajes</h4>
+                    <ul>
+                        <li>Python</li>
+                        <li>JavaScript</li>
+                        <li>SQL</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h4>Frontend</h4>
+                    <ul>
+                        <li>Next.js</li>
+                        <li>React</li>
+                        <li>HTML5</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h4>Backend</h4>
+                    <ul>
+                        <li>FastAPI</li>
+                        <li>RESTful APIs</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h4>Bases de Datos</h4>
+                    <ul>
+                        <li>PostgreSQL</li>
+                        <li>Diseño y Normalización</li>
+                        <li>Optimización de Consultas</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h4>Herramientas</h4>
+                    <ul>
+                        <li>Git & GitHub</li>
+                        <li>Docker</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h4>Cloud</h4>
+                    <ul>
+                        <li>AWS Cloud</li>
+                        <li>Cloud Architecture</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h4>Metodologías</h4>
+                    <ul>
+                        <li>Metodología Ágil</li>
+                        <li>GitFlow</li>
+                        <li>CI/CD</li>
+                        <li>Testing Automatizado</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="achievements">
+                <h3>Habilidades Personales</h3>
+                <ul>
+                    <li><strong>Trabajo en Equipo:</strong> Capacidad demostrada para colaborar efectivamente en proyectos grupales</li>
+                    <li><strong>Resolución de Problemas:</strong> Habilidad para analizar problemas complejos y desarrollar soluciones efectivas</li>
+                    <li><strong>Gestión de Proyectos:</strong> Capacidad para organizar tareas y cumplir con plazos establecidos</li>
+                    <li><strong>Aprendizaje Continuo:</strong> Disposición constante para adquirir nuevos conocimientos y habilidades</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="educacion">
+            <h2>Formación Académica</h2>
+            <div class="experience-item">
+                <div class="experience-header">
+                    <div class="experience-title">Ciencias de la Computación</div>
+                    <div class="experience-subtitle">Universidad Nacional de San Agustín</div>
+                    <div class="experience-date">2018 – 2025 | Arequipa, Perú</div>
+                </div>
+                <div class="experience-content">
+                    <p>Egresado con sólida formación en desarrollo de software, algoritmos, estructuras de datos y bases de datos.</p>
+                </div>
+            </div>
+
+            <div class="achievements">
+                <h3>Certificaciones</h3>
+                
+                <div style="margin-bottom: 1.5rem;">
+                    <p><strong>☁️ AWS Academy Graduate - Cloud Architecting</strong></p>
+                    <p>Amazon Web Services (AWS Academy)</p>
+                    <p><em>Diciembre 2025 - 60 horas de formación</em></p>
+                    <p><a href="https://www.credly.com/go/KV6Ozq6B" target="_blank" style="color: #667eea;">Ver credencial →</a></p>
+                </div>
+                
+                <div>
+                    <p><strong>📜 Certificado de Prácticas Preprofesionales</strong></p>
+                    <p>Departamento Académico de Estadística - Facultad de Ciencias Naturales y Formales, UNSA</p>
+                    <p>Desarrollo e implementación del Sistema de Asignación Optimizada de Aulas y Horarios</p>
+                    <p><em>Periodo: Agosto - Diciembre 2025 (64 horas efectivas)</em></p>
+                </div>
+            </div>
+
+            <div class="languages">
+                <div class="language-item">
+                    <strong>Español:</strong> Nativo
+                </div>
+                <div class="language-item">
+                    <strong>Inglés:</strong> Intermedio (Lectura y escritura técnica)
+                </div>
+                <div class="language-item">
+                    <strong>Portugués:</strong> Básico (Portugués Brasileño)
+                </div>
+            </div>
+        </section>
+
+        <section id="portfolio">
+            <h2>Portfolio Completo</h2>
+            <div class="pdf-section">
+                <p>Descarga mi Portfolio completo en formato PDF con todos los detalles de mi experiencia profesional, proyectos y certificaciones.</p>
+                <a href="Portafolio_Trabajo.pdf" class="pdf-download-btn" onclick="alert('Sube tu archivo Portafolio_Trabajo.pdf a la misma carpeta que index.html y cambia el # por el nombre del archivo: Portafolio_Trabajo.pdf'); return false;">
+                    📄 Descargar en PDF
+                </a>
+            </div>
+        </section>
+
+        <section id="contacto">
+            <h2>Contacto</h2>
+            <div class="contact-grid">
+                <div class="contact-card">
+                    <h3>📧 Email</h3>
+                    <a href="mailto:jchavezgue@unsa.edu.pe">jeanchavezgue@gmail.com</a>
+                </div>
+                <div class="contact-card">
+                    <h3>💼 Telefono</h3>
+                    <a href="953273157" target="_blank">linkedin.com/in/tu-perfil</a>
+                    <p style="margin-top: 0.5rem; font-size: 0.85rem; color: #666;"></p>
+                </div>
+                <div class="contact-card">
+                    <h3>🐙 GitHub</h3>
+                    <a href="https://github.com/JpChavez16/" target="_blank">github.com/tu-usuario</a>
+                    <p style="margin-top: 0.5rem; font-size: 0.85rem; color: #666;"></p>
+                </div>
+                <div class="contact-card">
+                    <h3>🌍 Ubicación</h3>
+                    <p>Arequipa, Perú</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Jean Pierre Chavez Guevara - Desarrollador Full Stack</p>
+        <p style="margin-top: 0.5rem; font-size: 0.9rem;">Egresado en Ciencias de la Computación - Universidad Nacional de San Agustín</p>
+    </footer>
+</body>
+</html>
